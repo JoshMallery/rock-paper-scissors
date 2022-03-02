@@ -1,0 +1,67 @@
+<!DOCTYPE = html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="".styles.css">
+  <title>Rock-Paper-Scissors - Solo Project</title>
+</head>
+<body>
+  <section class="container sidebar">
+    <section class="container player-icon">
+      <img class="player-image" src="./assets/player.svg" alt="Player">
+    </section>
+    <section class="container player-name">Human</section>
+    <section class="container win-count">
+      <section class="container player-count"></section>
+    </section>
+    <section class="container change-game hidden"></section>
+  </section>
+  <main class="container">
+      <div class="container game-heading-container">
+        <section class="container title-container">
+          <label class="title">Rock Paper Scissors</label>
+        </section>
+        <section class="container game-prompt-container">
+          <label class="game-prompt">Choose Your Fighter!</label>
+        </section>
+      </div>
+      <div class="container standard-game-container">
+        <section class="container normal-rules-container">
+          Insert Game Rules Here
+        </section>
+        <section class="container game-icon-container hidden">
+          <img class="game-icon" src="./assets/rock.svg" alt="Rock" id="rock">
+        </section>
+        <section class="container game-icon-container hidden">
+          <img class="game-icon" src="./assets/paper.svg" alt="paper" id="paper">
+        </section>
+        <section class="container game-icon-container hidden">
+          <img class="game-icon" src="./assets/scissors.svg" alt="scissors" id="scissors">
+        </section>
+      </div>
+      <div class="container enhanced-game-container">
+        <section class="container enhanced-rules-container">
+        Insert Enhanced Game Rules Here
+        </section>
+        <section class="container game-icon-container hidden">
+          <img class="game-icon" src="./assets/extra1.svg" alt="extra1" id="extra1">
+        </section>
+        <section class="container game-icon-container hidden">
+          <img class="game-icon" src="./assets/extra2.svg" alt="extra2" id="extra2">
+        </section>
+      </div>
+  </main>
+  <section class="container sidebar">
+    <section class="container player-icon">
+      <img class="player-image" src="./assets/computer.svg" alt="Computer Player">
+    </section>
+    <section class="container player-name">Computer</section>
+    <section class="container win-count">
+      <section class="container computer-count"></section>
+    </section>
+  </section>
+  <script src=".player.js"></script>
+  <script src=".game.js"></script>
+  <script src=".main.js"></script>
+</body>
+</html>
