@@ -1,0 +1,39 @@
+* {
+  border: dotted 1px blue;
+}
+
+body {
+  height: 100vh;
+  width:  100vw;
+  display: flex;
+  margin: 0;
+  background-color: lightgrey;
+  font-family: arial, times, sans-serif;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 15%
+}
+
+.main-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%
+}
+
+.player-icon, .player-name, .win-count, .change-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  width: 100%;
+}
+
+
+/* .hidden {
+  display: none;
+} */
