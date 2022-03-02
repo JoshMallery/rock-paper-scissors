@@ -34,8 +34,8 @@ body {
 }
 
 .player-image {
-  height: 25px;
-  width: 25px;
+  height: 75px;
+  width: 90px;
 }
 
 .player-count, .computer-count {
@@ -84,11 +84,10 @@ body {
 }
 
 .game-icon {
-  height: 145px;
-  width: 145px;
+  height: 135px;
+  width: 135px;
 }
 
-
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
