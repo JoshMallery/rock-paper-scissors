@@ -7,139 +7,97 @@ class Game {
   }
 
   determineWinner() {
-
     var hpick = this.human.pick;
     var cpick = this.computer.pick;
 
     if(hpick === cpick) {
-      //insert draw function here
-      return this.draw()
+      return this.draw();
     }
 
-    //this is the rocket function
     if(hpick === 'rocket' || cpick === 'rocket') {
-      this.rocketPick(hpick,cpick)
+      return this.rocketPick(hpick,cpick);
     }
 
     if(hpick === 'kangaroo' || cpick === 'kangaroo') {
-      this.kangarooPick(hpick,cpick)
+       return this.kangarooPick(hpick,cpick);
     }
 
     if (hpick === 'rock'){
-      this.rockPick(hpick,cpick)
+      return this.rockPick(hpick,cpick);
     }
 
     if(hpick === 'paper'){
-      this.paperPick(hpick,cpick)
+      return this.paperPick(hpick,cpick);
     }
 
-    //scissors function
     if(hpick === 'scissors'){
-      this.scissorPick(hpick,cpick)
+      return this.scissorPick(hpick,cpick);
     }
 
   }
-    draw() {
-      this.currentGameWinner = null;
-      return console.log("it's a draw")
+
+  draw() {
+    this.currentGameWinner = null;
+    return console.log("it's a draw")
+  }
+
+  rocketPick(hpick,cpick){
+    if(hpick === 'rocket'){
+      return this.humanWins();
+    }
+    return this.computerWins();
+  }
+
+  kangarooPick(hpick,cpick) {
+    if(hpick === 'kangaroo' && cpick === 'paper'){
+      return this.humanWins()
+    } else if (hpick === 'kangaroo') {
+      return this.computerWins()
     }
 
-    rocketPick(hpick,cpick){
-    //that beats eveything, stop there
-      if(hpick === 'rocket'){
-      //human wins
-      this.humanWins()
-      }
-    //else computer wins
-      this.computerWins()
+    if(cpick === 'kangaroo' && hpick === 'paper'){
+      return this.computerWins()
+    } else if(cpick === 'kangaroo') {
+      return this.humanWins()
     }
+  }
 
-
-//kangaroo function
-
-    kangarooPick(hpick,cpick) {
-      if(hpick === 'kangaroo' && cpick === 'paper'){
-        //human wins
-        return this.humanWins()
-      } else if (hpick === 'kangaroo') {
-        //computer wins
-        return this.computerWins()
-      }
-
-      if(cpick === 'kangaroo' && hpick === 'paper'){
-        //computer wins
-        return this.computerWins()
-      } else if(cpick === 'kangaroo') {
-        //human wins
-        return this.humanWins()
-      }
-
+  rockPick(hpick,cpick) {
+    if(cpick === 'paper'){
+      return this.computerWins()
     }
-
-
-//rock function
-
-    rockPick(hpick,cpick) {
-      if(cpick === 'paper'){
-        //computer wins
-        return this.computerWins()
-      }
-        //human wins
-        return this.humanWins()
-      }
-
-//paper function
-
-    paperPick(hpick,cpick) {
-      if(cpick === 'rock'){
-        //computer wins
-        return this.computerWins()
-      }
-      //else human wins
       return this.humanWins()
     }
 
-
-
-    scissorPick(hpick,cpick) {
-      if(cpick === 'rock') {
-        //computer wins
-        return this.computerWins()
-      }
-      //else human wins with paper
-      return this.humanWins()
+  paperPick(hpick,cpick) {
+    if(cpick === 'rock'){
+      return this.computerWins()
     }
+    return this.humanWins()
+  }
 
-
-    humanWins() {
-      this.human.wins++;
-      this.currentGameWinner = this.human.name;
-      this.human.saveWinsToStorage();
-      return console.log('human won');
-      //display humanwins message in DOM
+  scissorPick(hpick,cpick) {
+    if(cpick === 'rock') {
+      return this.computerWins()
     }
+    return this.humanWins()
+  }
 
-    computerWins() {
-      this.computer.wins++;
-      this.currentGameWinner = this.computer.name;
-      this.computer.saveWinsToStorage();
-      return console.log('computer won')
-      //display Human wins message in DOM
-    }
-    //if statements for a winner
-      //this.human.pick
-      //this.computer.pick
-    //update text for who won
-    //update text for a draw
-    //this.human.wins++
-    //this.computer.wins++
+  humanWins() {
+    this.human.wins++;
+    this.currentGameWinner = this.human.name;
+    this.human.saveWinsToStorage();
+    return console.log('human won');
+    //display humanwins message in DOM
+  }
 
-    //make helper functions to save and retrieve local wins
-      //run the saveWins toStorage
-      //run the retrueve wins
+  computerWins() {
+    this.computer.wins++;
+    this.currentGameWinner = this.computer.name;
+    this.computer.saveWinsToStorage();
+    return console.log('computer won')
+    //display Human wins message in DOM
+  }
 
-
-//some time of reset timer
-
-
+//some type of reset timer??
 }
