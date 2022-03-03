@@ -1,13 +1,25 @@
 var main = document.querySelector('main');
 var changeGame = document.querySelector('.change-game')
+var normalRules = document.querySelector('#standard');
+var enhancedRules = document.querySelector('#enhanced');
+var standardIcon = document.querySelectorAll('#standard-icon');
+var enhancedIcon = document.querySelectorAll('#enhanced-icon');
+console.log(standardIcon[0])
+// var scissorsIcon = document.querySelector('#scissors');
+// var rocketIcon = document.querySelector('#rocket');
+// var kangarooIcon = document.querySelector('#kangaroo');
+
+
+var gameChoice = "default";
 
 
 main.addEventListener('click', function(event) {
   console.log(event.target.id)
+  console.log(event.target.classList)
 
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-    var gameChoice = event.target.id;
-    gameSelection(event.target.id)
+     gameChoice = event.target.id;
+     return gameSelection(gameChoice)
     }
 
     startGame(gameChoice, event.target.id); //this should be the string of the id of a game icon
@@ -22,15 +34,46 @@ function switchGame() {
 
 function gameSelection(gameType) {
   if (gameType === 'standard') {
-    //displaystandard icons
-    } else {
-    //displayenhanced icons which includes standard within it
+    toggleStandard()
+  } else {
+    toggleEnhanced()
     }
   }
 
-function startGame(gameChoice, userpick) {
+function startGame(gameChoice, userPick) {
   console.log('gamestarted')
-  var currentGame = new Game(gameChoice,userPick)
+  console.log(gameChoice + " " + userPick)
+  var currentGame = new Game(gameChoice,userPick);
+    currentGame.determineWinner();
+  return console.log(currentGame)
+}
+
+
+
+function toggle(idToToggle) {
+ idToToggle.classList.toggle("hidden");
+}
+
+function toggleRules() {
+toggle(normalRules);
+toggle(enhancedRules);
+}
+
+function toggleStandard() {
+  toggleRules();
+  toggle(standardIcon[0]);
+  toggle(standardIcon[1]);
+  toggle(standardIcon[2]);
+  // toggle(paperIcon);
+  // toggle(scissorsIcon);
+}
+
+function toggleEnhanced() {
+  toggleStandard();
+  toggle(enhancedIcon[0]);
+  toggle(enhancedIcon[1]);
+  // toggle(kangarooIcon);
+
 }
 
 //eventhandler to listen for gametype selection click
