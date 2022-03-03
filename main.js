@@ -4,20 +4,35 @@ var changeGame = document.querySelector('.change-game')
 
 main.addEventListener('click', function(event) {
   console.log(event.target.id)
-// get id of event target
-//based on id of standard or enchanced
 
+  if(event.target.id === 'standard' || event.target.id === 'enhanced') {
+    var gameChoice = event.target.id;
+    gameSelection(event.target.id)
+    }
 
-
-
+    startGame(gameChoice, event.target.id); //this should be the string of the id of a game icon
 });
 
-changeGame.addEventListener('click', gameStart);
+changeGame.addEventListener('click', switchGame);
 
 
-function gameStart() {
-  return console.log('changegame please')
+function switchGame() {
+  console.log('changegame please')
 }
+
+function gameSelection(gameType) {
+  if (gameType === 'standard') {
+    //displaystandard icons
+    } else {
+    //displayenhanced icons which includes standard within it
+    }
+  }
+
+function startGame(gameChoice, userpick) {
+  console.log('gamestarted')
+  var currentGame = new Game(gameChoice,userPick)
+}
+
 //eventhandler to listen for gametype selection click
   //handler will need to
     //will store the gametype selection value
