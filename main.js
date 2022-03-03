@@ -1,35 +1,39 @@
 var main = document.querySelector('main');
 var changeGame = document.querySelector('.change-game')
-var normalRules = document.querySelector('#standard');
-var enhancedRules = document.querySelector('#enhanced');
-var standardIcon = document.querySelectorAll('#standard-icon');
-var enhancedIcon = document.querySelectorAll('#enhanced-icon');
-console.log(standardIcon[0])
-// var scissorsIcon = document.querySelector('#scissors');
-// var rocketIcon = document.querySelector('#rocket');
-// var kangarooIcon = document.querySelector('#kangaroo');
+var normalRules = document.querySelector('.normal-rules-container');
+var enhancedRules = document.querySelector('.enhanced-rules-container');
+var gameIcons = document.querySelectorAll('.game-icon-container');
+var changeGame = document.querySelector('.change-game');
+var playerWins = document.querySelector('.player-count');
+var computerWins = document.querySelector('.computer-count');
 
+loadScores()
+console.log(gameIcons[0])
 
-var gameChoice = "default";
+var gameChoice = null;
+var currentGame = null;
 
 
 main.addEventListener('click', function(event) {
   console.log(event.target.id)
-  console.log(event.target.classList)
 
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-     gameChoice = event.target.id;
-     return gameSelection(gameChoice)
+    gameChoice = event.target.id;
+    return gameSelection(gameChoice)
     }
 
     startGame(gameChoice, event.target.id); //this should be the string of the id of a game icon
 });
+
+
 
 changeGame.addEventListener('click', switchGame);
 
 
 function switchGame() {
   console.log('changegame please')
+  toggleRules()
+  // toggleEnhanced()
 }
 
 function gameSelection(gameType) {
@@ -43,37 +47,49 @@ function gameSelection(gameType) {
 function startGame(gameChoice, userPick) {
   console.log('gamestarted')
   console.log(gameChoice + " " + userPick)
-  var currentGame = new Game(gameChoice,userPick);
+  currentGame = new Game(gameChoice,userPick);
     currentGame.determineWinner();
+
+    toggleChangeGame()
+    updateScores()
   return console.log(currentGame)
 }
 
+function loadScores() {
+  playerWins.innerText = `Wins: ${localStorage.getItem('human')}`;
+  computerWins.innerText = `Wins: ${localStorage.getItem('computer')}`;
+}
 
+function updateScores() {
+  console.log(currentGame)
+  playerWins.innerText = `Wins: ${currentGame.human.wins}`;
+  computerWins.innerText = `Wins: ${currentGame.computer.wins}`;
+}
 
 function toggle(idToToggle) {
  idToToggle.classList.toggle("hidden");
 }
 
 function toggleRules() {
-toggle(normalRules);
-toggle(enhancedRules);
+  toggle(normalRules);
+  toggle(enhancedRules);
 }
 
 function toggleStandard() {
   toggleRules();
-  toggle(standardIcon[0]);
-  toggle(standardIcon[1]);
-  toggle(standardIcon[2]);
-  // toggle(paperIcon);
-  // toggle(scissorsIcon);
+  toggle(gameIcons[0]);
+  toggle(gameIcons[1]);
+  toggle(gameIcons[2]);
 }
 
 function toggleEnhanced() {
   toggleStandard();
-  toggle(enhancedIcon[0]);
-  toggle(enhancedIcon[1]);
-  // toggle(kangarooIcon);
+  toggle(gameIcons[3]);
+  toggle(gameIcons[4]);
+}
 
+function toggleChangeGame() {
+  toggle(changeGame);
 }
 
 //eventhandler to listen for gametype selection click
