@@ -3,6 +3,7 @@ var changeGame = document.querySelector('.change-game')
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
+var gamePrompt = document.querySelector('.game-prompt');
 
 var playerWins = document.querySelector('.player-count');
 var computerWins = document.querySelector('.computer-count');
@@ -12,7 +13,8 @@ loadScoresFromStorage()
 var currentGame = null;
 
 main.addEventListener('click', function(event) {
-  // console.log(event.target.classList[0])
+//   console.log(event.target.classList[0])
+// console.log(event.target.id)
 
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
     var gameChoice = event.target.id;
@@ -44,14 +46,32 @@ function gameSelection(gameType) {
   } else {
     toggleEnhanced()
     }
+
+    chooseFighterPrompt()
   }
+
+function chooseFighterPrompt() {
+  gamePrompt.innerText = `Choose Your Fighter!`;
+}
 
 function startGame(gameChoice, userPick) {
   console.log('gamestarted')
   console.log(gameChoice + " " + userPick)
+  // console.log(gameIcons[2].id)
+
+  hideAll();
+
   currentGame = new Game(gameChoice,userPick);
     currentGame.determineWinner();
+//     console.log(document.getElementById(userPick).parentElement.classList)
+// console.log(document.getElementById(`${userPick}-container`))
 
+    toggle(document.getElementById(`${userPick}-container`));
+
+    if(userPick !== currentGame.computer.pick){
+      toggle(document.getElementById(`${currentGame.computer.pick}-container`))
+    }
+    // document.getElementById(`${currentGame.computer.pick}-container`))
     // toggleChangeGame()
     updateScores()
   // return console.log(currentGame)
@@ -91,6 +111,14 @@ function toggleEnhanced() {
 
 function toggleChangeGame() {
   toggle(changeGame);
+}
+
+function hideAll() {
+
+
+  for(var i = 0; i < gameIcons.length; i++){
+    gameIcons[i].classList.add("hidden")
+  }
 }
 
 //eventhandler to listen for gametype selection click

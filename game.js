@@ -38,6 +38,7 @@ class Game {
 
   draw() {
     this.currentGameWinner = null;
+    gamePrompt.innerText =`It's draw!!`
     return console.log("it's a draw")
   }
 
@@ -87,6 +88,7 @@ class Game {
     this.human.wins++;
     this.currentGameWinner = this.human.name;
     this.human.saveWinsToStorage();
+    gamePrompt.innerText = `human wins!!`
     return console.log('human won');
     //display humanwins message in DOM
   }
@@ -95,6 +97,7 @@ class Game {
     this.computer.wins++;
     this.currentGameWinner = this.computer.name;
     this.computer.saveWinsToStorage();
+    gamePrompt.innerText = `computer wins!`
     return console.log('computer won')
     //display Human wins message in DOM
   }
