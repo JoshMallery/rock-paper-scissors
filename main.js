@@ -3,26 +3,28 @@ var changeGame = document.querySelector('.change-game')
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
-var changeGame = document.querySelector('.change-game');
+
 var playerWins = document.querySelector('.player-count');
 var computerWins = document.querySelector('.computer-count');
 
-loadScores()
-console.log(gameIcons[0])
+loadScoresFromStorage()
 
-var gameChoice = null;
 var currentGame = null;
 
-
 main.addEventListener('click', function(event) {
-  console.log(event.target.id)
+  // console.log(event.target.classList[0])
 
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-    gameChoice = event.target.id;
+    var gameChoice = event.target.id;
+
+    localStorage.setItem('standardOrEnhanced', gameChoice);
+
     return gameSelection(gameChoice)
     }
 
-    startGame(gameChoice, event.target.id); //this should be the string of the id of a game icon
+  if(event.target.classList[0] === 'game-icon') {
+    startGame(localStorage.getItem('standardOrEnhanced'), event.target.id);
+    } //this should be the string of the id of a game icon
 });
 
 
@@ -50,18 +52,17 @@ function startGame(gameChoice, userPick) {
   currentGame = new Game(gameChoice,userPick);
     currentGame.determineWinner();
 
-    toggleChangeGame()
+    // toggleChangeGame()
     updateScores()
-  return console.log(currentGame)
+  // return console.log(currentGame)
 }
 
-function loadScores() {
+function loadScoresFromStorage() {
   playerWins.innerText = `Wins: ${localStorage.getItem('human')}`;
   computerWins.innerText = `Wins: ${localStorage.getItem('computer')}`;
 }
 
 function updateScores() {
-  console.log(currentGame)
   playerWins.innerText = `Wins: ${currentGame.human.wins}`;
   computerWins.innerText = `Wins: ${currentGame.computer.wins}`;
 }
