@@ -1,11 +1,23 @@
 var main = document.querySelector('main');
 var changeGame = document.querySelector('.change-game')
-//listener on MAIN container for standard or enhanced game containers
-//listener on container change-game
 
-main.addEventListener('click',);
-changeGame.addEventListener('click',);
 
+main.addEventListener('click', function(event) {
+  console.log(event.target.id)
+// get id of event target
+//based on id of standard or enchanced
+
+
+
+
+});
+
+changeGame.addEventListener('click', gameStart);
+
+
+function gameStart() {
+  return console.log('changegame please')
+}
 //eventhandler to listen for gametype selection click
   //handler will need to
     //will store the gametype selection value
