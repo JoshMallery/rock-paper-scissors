@@ -20,6 +20,7 @@ main.addEventListener('click', function(event) {
     var gameChoice = event.target.id;
 
     localStorage.setItem('standardOrEnhanced', gameChoice);
+    toggleRules()
 
     return gameSelection(gameChoice)
     }
@@ -36,11 +37,15 @@ changeGame.addEventListener('click', switchGame);
 
 function switchGame() {
   console.log('changegame please')
-  toggleRules()
+  hideAll();
+  toggleRules();
+  toggleChangeGame();
   // toggleEnhanced()
 }
 
 function gameSelection(gameType) {
+  hideAll()
+
   if (gameType === 'standard') {
     toggleStandard()
   } else {
@@ -76,7 +81,15 @@ function startGame(gameChoice, userPick) {
     // document.getElementById(`${currentGame.computer.pick}-container`))
     // toggleChangeGame()
     updateScores()
+
+    setTimeout(restartGame,1000);
+    toggleChangeGame();
   // return console.log(currentGame)
+}
+
+function restartGame() {
+  gameSelection(localStorage.getItem('standardOrEnhanced'))
+  // startGame()
 }
 
 function loadScoresFromStorage() {
@@ -99,7 +112,6 @@ function toggleRules() {
 }
 
 function toggleStandard() {
-  toggleRules();
   toggle(gameIcons[0]);
   toggle(gameIcons[1]);
   toggle(gameIcons[2]);
