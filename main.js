@@ -52,9 +52,17 @@ function startGame(gameChoice, userPick) {
     toggle(document.getElementById(`draw-container`));
   }
 
+  closeOutGame()
+  // updateScoresFromStorage()
+  // changeGame.classList.remove('hidden');
+  // setTimeout(restartGame,1000);
+  // gameContainer.disabled = true;
+}
+function closeOutGame() {
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,600);
+  setTimeout(restartGame,1000);
+  gameContainer.disabled = true;
 }
 
 function switchGame() {
@@ -64,6 +72,7 @@ function switchGame() {
 }
 
 function restartGame() {
+  gameContainer.disabled = false;
   gameSelection(localStorage.getItem('standardOrEnhancedGame'));
 }
 
