@@ -2,8 +2,6 @@ class Game {
   constructor(gameChoice,userPick) {
     this.human = new Player('human',gameChoice,userPick);
     this.computer = new Player('computer',gameChoice);
-    this.gameType = gameChoice; // is this relevant?
-    this.currentGameWinner = null;
   }
 
   determineWinner() {
@@ -36,9 +34,7 @@ class Game {
   }
 
   draw() {
-    this.currentGameWinner = null;
     gamePrompt.innerText =`It's draw!!`
-
     return console.log("it's a draw")
   }
 
@@ -86,7 +82,6 @@ class Game {
 
   humanWins() {
     this.human.wins++;
-    this.currentGameWinner = this.human.name;
     this.human.saveWinsToStorage();
     gamePrompt.innerText = `Human Wins!!`
     return console.log('human won');
@@ -94,7 +89,6 @@ class Game {
 
   computerWins() {
     this.computer.wins++;
-    this.currentGameWinner = this.computer.name;
     this.computer.saveWinsToStorage();
     gamePrompt.innerText = `Computer Wins!!`
     return console.log('computer won')

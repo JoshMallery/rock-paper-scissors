@@ -33,7 +33,6 @@ function gameSelection(gameType) {
   } else {
     toggleEnhancedGameView();
     }
-  gamePrompt.innerText = `Choose Your Fighter!`;
   }
 
 function startGame(gameChoice, userPick) {
@@ -90,12 +89,14 @@ function toggleStandardGameView() {
   toggle(gameIcons[0]);
   toggle(gameIcons[1]);
   toggle(gameIcons[2]);
+  gamePrompt.innerText = `Choose Your Fighter!`;
 }
 
 function toggleEnhancedGameView() {
   toggleStandardGameView();
   toggle(gameIcons[3]);
   toggle(gameIcons[4]);
+  gamePrompt.innerText = `Choose Your Fighter!`;
 }
 
 function toggleChangeGame() {
