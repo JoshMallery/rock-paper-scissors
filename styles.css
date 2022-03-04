@@ -8,7 +8,9 @@ body {
   display: flex;
   margin: 0;
   background-color: lightgrey;
-  font-family: arial, times, sans-serif;
+  font-family: 'Permanent Marker', cursive; times, sans-serif;
+  color: ghostwhite;
+  /* font-family: 'Permanent Marker', cursive; */
 }
 
 .sidebar {

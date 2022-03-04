@@ -13,23 +13,23 @@ class Game {
     }
 
     if(hpick === 'rocket' || cpick === 'rocket') {
-      return this.rocketPick(hpick,cpick);
+      return this.eitherRocketPick(hpick,cpick);
     }
 
     if(hpick === 'kangaroo' || cpick === 'kangaroo') {
-       return this.kangarooPick(hpick,cpick);
+       return this.eitherKangarooPick(hpick,cpick);
     }
 
     if (hpick === 'rock'){
-      return this.rockPick(hpick,cpick);
+      return this.userRockPick(hpick,cpick);
     }
 
     if(hpick === 'paper'){
-      return this.paperPick(hpick,cpick);
+      return this.userPaperPick(hpick,cpick);
     }
 
     if(hpick === 'scissors'){
-      return this.scissorPick(hpick,cpick);
+      return this.userScissorPick(hpick,cpick);
     }
   }
 
@@ -38,14 +38,14 @@ class Game {
     return console.log("it's a draw")
   }
 
-  rocketPick(hpick,cpick){
+  eitherRocketPick(hpick,cpick){
     if(hpick === 'rocket'){
       return this.humanWins();
     }
     return this.computerWins();
   }
 
-  kangarooPick(hpick,cpick) {
+  eitherKangarooPick(hpick,cpick) {
     if(hpick === 'kangaroo' && cpick === 'paper'){
       return this.humanWins()
     } else if (hpick === 'kangaroo') {
@@ -59,21 +59,21 @@ class Game {
     }
   }
 
-  rockPick(hpick,cpick) {
+  userRockPick(hpick,cpick) {
     if(cpick === 'paper'){
       return this.computerWins()
     }
       return this.humanWins()
     }
 
-  paperPick(hpick,cpick) {
+  userPaperPick(hpick,cpick) {
     if(cpick === 'rock'){
       return this.computerWins()
     }
     return this.humanWins()
   }
 
-  scissorPick(hpick,cpick) {
+  userScissorPick(hpick,cpick) {
     if(cpick === 'rock') {
       return this.computerWins()
     }

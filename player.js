@@ -14,7 +14,6 @@ class Player {
     if(this.gameChoice === 'standard') {
       gameLength = 3;
     }
-
     return gameArray[Math.floor(Math.random() * gameLength)]
   }
 

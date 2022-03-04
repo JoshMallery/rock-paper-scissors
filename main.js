@@ -14,7 +14,7 @@ var currentGame = null;
 
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
-// console.log(event.target.classList.value)
+
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
     localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
@@ -37,22 +37,24 @@ function gameSelection(gameType) {
 
 function startGame(gameChoice, userPick) {
   hideAllGameIcons();
-  currentGame = new Game(gameChoice,userPick);
+  currentGame = new Game(gameChoice, userPick);
   currentGame.determineWinner();
 
-//Can I make this easier to Read? userIcon to Display, ComputerIcon to Display
-  toggle(document.getElementById(`${userPick}-container`));
+  var userPickToDisplay = currentGame.human.pick;
+  var computerPickToDisplay = currentGame.computer.pick;
 
-  if(userPick !== currentGame.computer.pick){
-    toggle(document.getElementById(`${currentGame.computer.pick}-container`))
+  toggle(document.getElementById(`${userPickToDisplay}-container`));
+
+  if(userPickToDisplay !== computerPickToDisplay){
+    toggle(document.getElementById(`${computerPickToDisplay}-container`))
   } else {
-    inCaseOfADraw.src = `./assets/${currentGame.computer.pick}.png`;
+    inCaseOfADraw.src = `./assets/${computerPickToDisplay}.png`;
     toggle(document.getElementById(`draw-container`));
   }
 
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,500);
+  setTimeout(restartGame,600);
 }
 
 function switchGame() {
