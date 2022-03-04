@@ -72,6 +72,7 @@ function switchGame() {
 }
 
 function restartGame() {
+  gameContainer.disabled = false;
   gameSelection(localStorage.getItem('standardOrEnhancedGame'));
 }
 
