@@ -43,7 +43,12 @@ function startGame(gameChoice, userPick) {
   var userPickToDisplay = currentGame.human.pick;
   var computerPickToDisplay = currentGame.computer.pick;
 
+  displayGamePlayIcons(userPickToDisplay,computerPickToDisplay)
 
+  closeOutGame();
+}
+
+function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
   toggle(document.getElementById(`${userPickToDisplay}-container`));
 
   if(userPickToDisplay !== computerPickToDisplay){
@@ -52,14 +57,12 @@ function startGame(gameChoice, userPick) {
     inCaseOfADraw.src = `./assets/${computerPickToDisplay}.png`;
     toggle(document.getElementById(`draw-container`));
   }
-
-  closeOutGame();
 }
 
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,600);
+  setTimeout(restartGame,2000);
 }
 
 function switchGame() {
