@@ -39,6 +39,7 @@ class Game {
   draw() {
     this.currentGameWinner = null;
     gamePrompt.innerText =`It's draw!!`
+    
     return console.log("it's a draw")
   }
 

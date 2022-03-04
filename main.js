@@ -3,6 +3,7 @@ var changeGame = document.querySelector('.change-game')
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
+var drawOnly = document.querySelector('#draw');
 var gamePrompt = document.querySelector('.game-prompt');
 
 var playerWins = document.querySelector('.player-count');
@@ -76,13 +77,16 @@ function startGame(gameChoice, userPick) {
     if(userPick !== currentGame.computer.pick){
       toggle(document.getElementById(`${currentGame.computer.pick}-container`))
     } else {
+      drawOnly.src = `./assets/${currentGame.computer.pick}.png`;
+      toggle(document.getElementById(`draw-container`));
+      // gameIcons[5].classList.remove('hidden')
       //make a duplicate Image of the userPickContainer
     }
     // document.getElementById(`${currentGame.computer.pick}-container`))
     // toggleChangeGame()
     updateScores()
 
-    setTimeout(restartGame,1000);
+    setTimeout(restartGame,750);
     toggleChangeGame();
   // return console.log(currentGame)
 }
