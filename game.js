@@ -83,14 +83,20 @@ class Game {
   humanWins() {
     this.human.wins++;
     this.human.saveWinsToStorage();
-    gamePrompt.innerText = `Human Wins!!`
+    gamePrompt.innerHTML = `
+    <img class="player-image-mini" src="./assets/player.png" alt="Player">
+    Human Wins!!
+    <img class="player-image-mini" src="./assets/player.png" alt="Player">`
     return console.log('human won');
   }
 
   computerWins() {
     this.computer.wins++;
     this.computer.saveWinsToStorage();
-    gamePrompt.innerText = `Computer Wins!!`
+    gamePrompt.innerHTML = `
+    <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">
+    Computer Wins!!
+    <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">`
     return console.log('computer won')
   }
 
