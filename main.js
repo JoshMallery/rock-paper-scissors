@@ -87,7 +87,8 @@ function startGame(gameChoice, userPick) {
     updateScores()
 
     setTimeout(restartGame,750);
-    toggleChangeGame();
+    changeGame.classList.remove('hidden');
+    // toggleChangeGame();
   // return console.log(currentGame)
 }
 
