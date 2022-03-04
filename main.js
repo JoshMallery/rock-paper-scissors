@@ -43,6 +43,7 @@ function startGame(gameChoice, userPick) {
   var userPickToDisplay = currentGame.human.pick;
   var computerPickToDisplay = currentGame.computer.pick;
 
+
   toggle(document.getElementById(`${userPickToDisplay}-container`));
 
   if(userPickToDisplay !== computerPickToDisplay){
@@ -52,6 +53,10 @@ function startGame(gameChoice, userPick) {
     toggle(document.getElementById(`draw-container`));
   }
 
+  closeOutGame();
+}
+
+function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
   setTimeout(restartGame,600);
