@@ -13,17 +13,15 @@ loadScoresFromStorage()
 
 var currentGame = null;
 
+changeGame.addEventListener('click', switchGame);
 main.addEventListener('click', function(event) {
-//   console.log(event.target.classList[0])
 console.log(event.target)
 
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
     var gameChoice = event.target.id;
-
     localStorage.setItem('standardOrEnhanced', gameChoice);
-    toggleRules()
-
-    return gameSelection(gameChoice)
+    toggleRules();
+    gameSelection(gameChoice);
     }
 
   if(event.target.classList[0] === 'game-icon') {
@@ -31,15 +29,8 @@ console.log(event.target)
     }
 });
 
-changeGame.addEventListener('click', switchGame);
 
 
-function switchGame() {
-  console.log('changegame please')
-  hideAll();
-  toggleRules();
-  toggleChangeGame();
-}
 
 function gameSelection(gameType) {
   hideAll()
@@ -65,19 +56,23 @@ function startGame(gameChoice, userPick) {
 
   toggle(document.getElementById(`${userPick}-container`));
 
-//draw logic
   if(userPick !== currentGame.computer.pick){
     toggle(document.getElementById(`${currentGame.computer.pick}-container`))
   } else {
     drawOnly.src = `./assets/${currentGame.computer.pick}.png`;
     toggle(document.getElementById(`draw-container`));
-    // gameIcons[5].classList.remove('hidden')
   }
 
   updateScores()
-
-  setTimeout(restartGame,750);
   changeGame.classList.remove('hidden');
+  setTimeout(restartGame,500);
+}
+
+function switchGame() {
+  console.log('changegame please')
+  hideAll();
+  toggleRules();
+  toggleChangeGame();
 }
 
 function restartGame() {
