@@ -1,92 +1,80 @@
-var main = document.querySelector('main');// change this to the standard game box
-var changeGame = document.querySelector('.change-game')
+var gameContainer = document.querySelector('.standard-game-container');
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
-var drawOnly = document.querySelector('#draw');
+var inCaseOfADraw = document.querySelector('#draw');
 var gamePrompt = document.querySelector('.game-prompt');
-
+var changeGame = document.querySelector('.change-game');
 var playerWins = document.querySelector('.player-count');
 var computerWins = document.querySelector('.computer-count');
 
-loadScoresFromStorage()
+updateScoresFromStorage();
 
 var currentGame = null;
 
 changeGame.addEventListener('click', switchGame);
-main.addEventListener('click', function(event) {
-console.log(event.target)
-
+gameContainer.addEventListener('click', function(event) {
+// console.log(event.target.classList.value)
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-    var gameChoice = event.target.id;
-    localStorage.setItem('standardOrEnhanced', gameChoice);
+    localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
-    gameSelection(gameChoice);
+    gameSelection(event.target.id);
     }
 
-  if(event.target.classList[0] === 'game-icon') {
-    startGame(localStorage.getItem('standardOrEnhanced'), event.target.id);
+  if(event.target.classList.value === 'game-icon') {
+    startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
     }
 });
 
-
-
-
 function gameSelection(gameType) {
-  hideAll()
-
+  hideAllGameIcons();
   if (gameType === 'standard') {
-    toggleStandardGameView()
+    toggleStandardGameView();
   } else {
-    toggleEnhancedGameView()
+    toggleEnhancedGameView();
     }
-
-    gamePrompt.innerText = `Choose Your Fighter!`;
+  gamePrompt.innerText = `Choose Your Fighter!`;
   }
 
-
 function startGame(gameChoice, userPick) {
-  console.log('gamestarted')
-  console.log(gameChoice + " " + userPick)
-
-  hideAll();
-
+  hideAllGameIcons();
   currentGame = new Game(gameChoice,userPick);
   currentGame.determineWinner();
 
+//Can I make this easier to Read? userIcon to Display, ComputerIcon to Display
   toggle(document.getElementById(`${userPick}-container`));
 
   if(userPick !== currentGame.computer.pick){
     toggle(document.getElementById(`${currentGame.computer.pick}-container`))
   } else {
-    drawOnly.src = `./assets/${currentGame.computer.pick}.png`;
+    inCaseOfADraw.src = `./assets/${currentGame.computer.pick}.png`;
     toggle(document.getElementById(`draw-container`));
   }
 
-  updateScores()
+  updateScoresFromStorage()
   changeGame.classList.remove('hidden');
   setTimeout(restartGame,500);
 }
 
 function switchGame() {
-  console.log('changegame please')
-  hideAll();
+  hideAllGameIcons();
   toggleRules();
   toggleChangeGame();
 }
 
 function restartGame() {
-  gameSelection(localStorage.getItem('standardOrEnhanced'))
+  gameSelection(localStorage.getItem('standardOrEnhancedGame'));
 }
 
-function loadScoresFromStorage() {
+function updateScoresFromStorage() {
   playerWins.innerText = `Wins: ${localStorage.getItem('human')}`;
   computerWins.innerText = `Wins: ${localStorage.getItem('computer')}`;
 }
 
-function updateScores() {
-  playerWins.innerText = `Wins: ${currentGame.human.wins}`;
-  computerWins.innerText = `Wins: ${currentGame.computer.wins}`;
+function hideAllGameIcons() {
+  for(var i = 0; i < gameIcons.length; i++){
+    gameIcons[i].classList.add("hidden");
+  }
 }
 
 function toggle(idToToggle) {
@@ -112,10 +100,4 @@ function toggleEnhancedGameView() {
 
 function toggleChangeGame() {
   toggle(changeGame);
-}
-
-function hideAll() {
-  for(var i = 0; i < gameIcons.length; i++){
-    gameIcons[i].classList.add("hidden")
-  }
 }

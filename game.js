@@ -33,7 +33,6 @@ class Game {
     if(hpick === 'scissors'){
       return this.scissorPick(hpick,cpick);
     }
-
   }
 
   draw() {
@@ -91,7 +90,6 @@ class Game {
     this.human.saveWinsToStorage();
     gamePrompt.innerText = `Human Wins!!`
     return console.log('human won');
-    //display humanwins message in DOM
   }
 
   computerWins() {
@@ -100,8 +98,6 @@ class Game {
     this.computer.saveWinsToStorage();
     gamePrompt.innerText = `Computer Wins!!`
     return console.log('computer won')
-    //display Human wins message in DOM
   }
 
-//some type of reset timer??
 }
