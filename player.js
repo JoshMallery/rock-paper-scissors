@@ -14,7 +14,6 @@ class Player {
     if(this.gameChoice === 'standard') {
       gameLength = 3;
     }
-
     return gameArray[Math.floor(Math.random() * gameLength)]
   }
 
@@ -25,5 +24,4 @@ class Player {
   retrieveWinsFromStorage() {
      return this.wins = localStorage.getItem(this.name);
   }
-
 }
