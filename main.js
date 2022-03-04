@@ -11,7 +11,7 @@ var computerWins = document.querySelector('.computer-count');
 updateScoresFromStorage();
 
 var currentGame = null;
-
+//the error is that if i click change game, restart game is still trying to run, there is a gap that exists where it shows the game rules then resets the game
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
 
@@ -62,7 +62,7 @@ function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,2000);
+  setTimeout(restartGame,1000);
 }
 
 function switchGame() {
@@ -72,7 +72,6 @@ function switchGame() {
 }
 
 function restartGame() {
-  gameContainer.disabled = false;
   gameSelection(localStorage.getItem('standardOrEnhancedGame'));
 }
 
