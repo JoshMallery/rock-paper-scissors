@@ -70,6 +70,8 @@ function startGame(gameChoice, userPick) {
 
     if(userPick !== currentGame.computer.pick){
       toggle(document.getElementById(`${currentGame.computer.pick}-container`))
+    } else {
+      //make a duplicate Image of the userPickContainer
     }
     // document.getElementById(`${currentGame.computer.pick}-container`))
     // toggleChangeGame()
@@ -114,8 +116,6 @@ function toggleChangeGame() {
 }
 
 function hideAll() {
-
-
   for(var i = 0; i < gameIcons.length; i++){
     gameIcons[i].classList.add("hidden")
   }

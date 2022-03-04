@@ -63,24 +63,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50%;
+  flex-wrap: wrap;
+  height: 80%;
   width: 100%;
 }
 
-.enhanced-game-container {
+/* .enhanced-game-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30%;
   width: 100%;
-}
+} */
 
 .normal-rules-container, .enhanced-rules-container, .game-icon-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60%;
-  width: 20%
+  height: 30%;
+  width: 30%
 }
 
 .game-icon {
