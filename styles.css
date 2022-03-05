@@ -33,6 +33,7 @@ body {
   font-size: 22px;
   height: 10%;
   justify-content: center;
+  margin: 10px;
   width: 100%;
 }
 
@@ -78,9 +79,11 @@ body {
 
 .normal-rules-container, .enhanced-rules-container, .game-icon-container {
   align-items: center;
+  cursor: pointer;
   display: flex;
   height: 30%;
   justify-content: center;
+  padding: 15px;
   width: 30%;
 }
 
@@ -88,8 +91,8 @@ body {
   transform: skew(-5deg);
 }
 
-.game-icon-container:hover, .change-game:hover {
-   transform: scale(1.2);
+.game-icon:hover, .change-game:hover {
+  transform: scale(1.2);
 }
 
 .normal-rules-container, .enhanced-rules-container {
@@ -101,9 +104,15 @@ body {
   padding: 20px;
 }
 
-.game-icon {
+.game-icon, .change-game {
+  cursor: url("./assets/player-cursor.png"), pointer;
   height: 135px;
   width: 135px;
+}
+
+.player-mini {
+  height: 32px;
+  width: 32px;
 }
 
 .hidden {
