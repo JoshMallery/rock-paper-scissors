@@ -73,7 +73,7 @@ function displayPlayersSmallIcon(userPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,4000);
+  setTimeout(restartGame,2000);
 }
 
 function switchGame() {
