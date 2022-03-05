@@ -22,6 +22,8 @@ gameContainer.addEventListener('click', function(event) {
     }
 
   if(event.target.classList.value === 'game-icon') {
+    //remove the listener here once we know we have selected a game icon
+    //this.removeEventListener('click',arguments.callee);
     startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
     }
 });
@@ -36,6 +38,8 @@ function gameSelection(gameType) {
   }
 
 function startGame(gameChoice, userPick) {
+  // gameContainer = null;
+  //also we could remove the listener here?
   hideAllGameIcons();
   currentGame = new Game(gameChoice, userPick);
   currentGame.determineWinner();
@@ -62,22 +66,36 @@ function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,1000);
+  setTimeout(restartGame,4000);
 }
 
 function switchGame() {
   hideAllGameIcons();
   toggleRules();
   toggleChangeGame();
+  gamePrompt.innerText = "Choose Your Game!";
 }
 
 function restartGame() {
+  //this is the best spot to re-instate the listener
+  // gameContainer = document.querySelector('.standard-game-container');
   gameSelection(localStorage.getItem('standardOrEnhancedGame'));
 }
 
 function updateScoresFromStorage() {
-  playerWins.innerText = `Wins: ${localStorage.getItem('human')}`;
-  computerWins.innerText = `Wins: ${localStorage.getItem('computer')}`;
+  var humanScore = localStorage.getItem('human');
+  var computerScore = localStorage.getItem('computer');
+
+  if(!humanScore){
+    humanScore = 0;
+  }
+
+  if(!computerScore){
+    computerScore = 0;
+  }
+
+  playerWins.innerText = `Wins: ${humanScore}`;
+  computerWins.innerText = `Wins: ${computerScore}`;
 }
 
 function hideAllGameIcons() {
