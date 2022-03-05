@@ -67,7 +67,7 @@ class Game {
     }
 
   userPaperPick(hpick,cpick) {
-    if(cpick === 'rock'){
+    if(cpick === 'scissors'){
       return this.computerWins()
     }
     return this.humanWins()
