@@ -92,7 +92,7 @@ body {
 }
 
 .game-icon:hover, .change-game:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .normal-rules-container, .enhanced-rules-container {
