@@ -16,18 +16,35 @@ var currentGame = null;
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
 
+standardOrEnhancedGame(event)
+  // if(event.target.id === 'standard' || event.target.id === 'enhanced') {
+  //   localStorage.setItem('standardOrEnhancedGame', event.target.id);
+  //   toggleRules();
+  //   gameSelection(event.target.id);
+  //   }
+playerIconSelection(event)
+  // if(event.target.classList.value === 'game-icon') {
+  //   //remove the listener here once we know we have selected a game icon
+  //   //this.removeEventListener('click',arguments.callee);
+  //   startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
+  //   }
+});
+
+function standardOrEnhancedGame(event) {
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
     localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
     gameSelection(event.target.id);
     }
+}
 
-  if(event.target.classList.value === 'game-icon') {
-    //remove the listener here once we know we have selected a game icon
-    //this.removeEventListener('click',arguments.callee);
-    startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
-    }
-});
+function playerIconSelection(event) {
+if(event.target.classList.value === 'game-icon') {
+  //remove the listener here once we know we have selected a game icon
+  //this.removeEventListener('click',arguments.callee);
+  startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
+  }
+}
 
 function gameSelection(gameType) {
   hideAllGameIcons();
@@ -56,7 +73,7 @@ function startGame(gameChoice, userPick) {
 function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
   toggle(document.getElementById(`${userPickToDisplay}-container`));
   displayPlayersSmallIcon(userPickToDisplay);
-  
+
   computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
   toggle(document.getElementById(`computer-container`));
 }
