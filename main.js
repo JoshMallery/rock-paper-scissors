@@ -15,22 +15,11 @@ var currentGame = null;
 //the error is that if i click change game, restart game is still trying to run, there is a gap that exists where it shows the game rules then resets the game
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
-
-standardOrEnhancedGame(event)
-  // if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-  //   localStorage.setItem('standardOrEnhancedGame', event.target.id);
-  //   toggleRules();
-  //   gameSelection(event.target.id);
-  //   }
-playerIconSelection(event)
-  // if(event.target.classList.value === 'game-icon') {
-  //   //remove the listener here once we know we have selected a game icon
-  //   //this.removeEventListener('click',arguments.callee);
-  //   startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
-  //   }
+  standardOrEnhancedGameSelection(event)
+  playerIconSelection(event)
 });
 
-function standardOrEnhancedGame(event) {
+function standardOrEnhancedGameSelection(event) {
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
     localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
@@ -85,7 +74,9 @@ function displayPlayersSmallIcon(userPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
+
   setTimeout(restartGame,2000);
+  //disable buttons
 }
 
 function switchGame() {
@@ -96,6 +87,7 @@ function switchGame() {
 }
 
 function restartGame() {
+  //enable buttons
   //this is the best spot to re-instate the listener
   // gameContainer = document.querySelector('.standard-game-container');
   gameSelection(localStorage.getItem('standardOrEnhancedGame'));

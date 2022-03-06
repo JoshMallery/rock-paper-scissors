@@ -116,6 +116,7 @@ body {
 
 .player-mini {
   height: 32px;
+  transform: translateY(50px);
   width: 32px;
 }
 
