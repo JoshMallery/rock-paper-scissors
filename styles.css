@@ -27,7 +27,7 @@ body {
   width: 70%
 }
 
-.player-icon, .player-name, .win-count, .change-game {
+.player-icon, .player-name, .win-count, .change-game, .reset-score {
   align-items: center;
   display: flex;
   font-size: 22px;
@@ -100,12 +100,12 @@ body {
   transform: skew(-5deg);
 }
 
-.game-icon:hover, .change-game:hover {
+.game-icon:hover, .change-game:hover, .reset-score:hover {
   transform: scale(1.1);
 }
 
 
-.game-icon, .change-game {
+.game-icon, .change-game, .reset-score {
   cursor: url("./assets/player-cursor.png"), pointer;
 }
 
