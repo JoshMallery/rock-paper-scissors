@@ -109,12 +109,7 @@ body {
   cursor: url("./assets/player-cursor.png"), pointer;
 }
 
-.game-icon {
-  height: 135px;
-  width: 135px;
-}
-
-.fighter-icon {
+.game-icon, .fighter-icon {
   height: 135px;
   width: 135px;
 }
