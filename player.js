@@ -1,7 +1,6 @@
 class Player {
   constructor(playerName,gameChoice,userPick) {
       this.name = playerName;
-      // this.token = ;
       this.wins = this.retrieveWinsFromStorage() || 0;
       this.gameChoice = gameChoice
       this.pick = userPick || this.takeTurn();
@@ -9,7 +8,7 @@ class Player {
 
   takeTurn() {
     var gameLength = 5;
-    var gameArray = ['rock','paper','scissors','rocket','kangaroo']
+    var gameArray = ['rock','paper','scissors','rocket','kangaroo'];
 
     if(this.gameChoice === 'standard') {
       gameLength = 3;
