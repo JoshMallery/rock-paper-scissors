@@ -12,7 +12,7 @@ var computerWins = document.querySelector('.computer-count');
 
 updateScoresFromStorage();
 
-var currentGame = null;
+var currentGame = new Game;
 
 changeGame.addEventListener('click', switchGame);
 resetGame.addEventListener('click', resetScores);
@@ -23,45 +23,41 @@ gameContainer.addEventListener('click', function(event) {
 
 function standardOrEnhancedGameSelection(event) {
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
+    currentGame.human.gameChoice = event.target.id;
+    currentGame.computer.gameChoice = event.target.id;
     toggleRules();
-    localStorage.setItem('standardOrEnhancedGame', event.target.id);
-    gameSelection(event.target.id);
+    gameIconSelection();
     }
 }
 
 function playerIconSelection(event) {
 if(event.target.classList.value === 'game-icon') {
-  startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
+  currentGame.human.pick = event.target.id;
+  startGame();
   }
 }
 
-function gameSelection(gameType) {
+function gameIconSelection() {
   hideAllGameIcons();
-  if (gameType === 'standard') {
+  if (currentGame.human.gameChoice === 'standard') {
     toggleStandardGameView();
   } else {
     toggleEnhancedGameView();
     }
   }
 
-function startGame(gameChoice, userPick) {
+function startGame() {
   hideAllGameIcons();
-  currentGame = new Game(gameChoice, userPick);
   currentGame.determineWinner();
-
-  var userPickToDisplay = currentGame.human.pick;
-  var computerPickToDisplay = currentGame.computer.pick;
-
-  displayGamePlayIcons(userPickToDisplay,computerPickToDisplay);
-
+  displayGamePlayIcons();
   closeOutGame();
 }
 
-function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
-  playerGameIcon.src = `./assets/${userPickToDisplay}.png`;
+function displayGamePlayIcons() {
+  playerGameIcon.src = `./assets/${currentGame.human.pick}.png`;
   toggle(document.getElementById(`player-container`));
 
-  computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
+  computerGameIcon.src = `./assets/${currentGame.computer.pick}.png`;
   toggle(document.getElementById(`computer-container`));
 }
 
@@ -69,20 +65,7 @@ function closeOutGame(){
   updateScoresFromStorage();
   changeGame.classList.remove('hidden');
   resetGame.classList.remove('hidden');
-  setTimeout(restartGame,1200);
-}
-
-function switchGame() {
-  hideAllGameIcons();
-  toggleRules();
-  toggleChangeGame();
-  gamePrompt.innerText = "Choose Your Game!";
-}
-
-function restartGame() {
-  if (normalRules.classList.contains("hidden")){
-    gameSelection(localStorage.getItem('standardOrEnhancedGame'));
-  }
+  setTimeout(currentGame.restartGame,1200);
 }
 
 function updateScoresFromStorage() {
@@ -101,9 +84,17 @@ function updateScoresFromStorage() {
   computerWins.innerText = `Wins: ${computerScore}`;
 }
 
+function switchGame() {
+  hideAllGameIcons();
+  toggleRules();
+  toggleChangeGame();
+  gamePrompt.innerText = "Choose Your Game!";
+}
+
 function resetScores() {
-  localStorage.removeItem('human');
-  localStorage.removeItem('computer');
+  currentGame.human.wins = 0;
+  currentGame.computer.wins = 0;
+  currentGame.clearScores()
   updateScoresFromStorage();
 }
 
