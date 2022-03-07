@@ -2,7 +2,6 @@ var gameContainer = document.querySelector('.standard-game-container');
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
-// var playerMiniIcons = document.querySelectorAll('.player-mini');
 var playerGameIcon = document.querySelector('#player');
 var computerGameIcon = document.querySelector('#computer');
 var gamePrompt = document.querySelector('.game-prompt');
@@ -59,15 +58,10 @@ function startGame(gameChoice, userPick) {
 function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
   playerGameIcon.src = `./assets/${userPickToDisplay}.png`;
   toggle(document.getElementById(`player-container`));
-  // displayPlayersSmallIcon(userPickToDisplay);
 
   computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
   toggle(document.getElementById(`computer-container`));
 }
-
-// function displayPlayersSmallIcon(userPickToDisplay) {
-//   toggle(document.getElementById(`display-user-pick`))
-// }
 
 function closeOutGame(){
   updateScoresFromStorage()
@@ -108,10 +102,6 @@ function hideAllGameIcons() {
   for(var i = 0; i < gameIcons.length; i++){
     gameIcons[i].classList.add("hidden");
   }
-
-  // for(var i = 0; i < playerMiniIcons.length; i++){
-  //   playerMiniIcons[i].classList.add("hidden");
-  // }
 }
 
 function toggle(idToToggle) {
