@@ -7,6 +7,7 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 
 ### Contributor
 * [Josh Mallery](https://github.com/JoshMallery)
+
 ## Learning Goals
  1. Solidify and demonstrate your understanding of:
     - DRY JavaScript
@@ -22,17 +23,16 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 
 ## Application Features
 
-![Standard Rock Paper Scissors](link here)
 * On page load, and when a user clicks the New Palette button, a new set of colors is created and displayed.
-
-![Enhanced Rock Paper Scissors with more Objects to choose from](link here)
+* Scores Saved Automatically! Your scores stay even if you reload the page!
+* Computer winning too much? You can reset the scores as well!
 * This enhanced version of Rock Paper Scissors lets you play with more objects for even better gameplay!
-
-![Score keeping](link here)
 * You are playing against a computer and the wins in the matches are automatically tallied
-
-![Automatic Reset](link here)
 * Games reset automatically
+
+##GamePlay Animation
+
+
 
 ### Set Up
 

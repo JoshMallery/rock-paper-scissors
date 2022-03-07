@@ -66,7 +66,7 @@ function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage();
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,9000);
+  setTimeout(restartGame,1200);
 }
 
 function switchGame() {
