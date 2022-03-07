@@ -34,8 +34,8 @@ class Game {
   }
 
   draw() {
-    gamePrompt.innerText =`It's draw!!`
-    return console.log("it's a draw")
+    gamePrompt.innerText =`It's draw!!`;
+    return
   }
 
   eitherRocketPick(hpick,cpick){
@@ -47,23 +47,23 @@ class Game {
 
   eitherKangarooPick(hpick,cpick) {
     if(hpick === 'kangaroo' && cpick === 'paper'){
-      return this.humanWins()
+      return this.humanWins();
     } else if (hpick === 'kangaroo') {
-      return this.computerWins()
+      return this.computerWins();
     }
 
     if(cpick === 'kangaroo' && hpick === 'paper'){
-      return this.computerWins()
+      return this.computerWins();
     } else if(cpick === 'kangaroo') {
-      return this.humanWins()
+      return this.humanWins();
     }
   }
 
   userRockPick(hpick,cpick) {
     if(cpick === 'paper'){
-      return this.computerWins()
+      return this.computerWins();
     }
-      return this.humanWins()
+      return this.humanWins();
     }
 
   userPaperPick(hpick,cpick) {
@@ -75,9 +75,9 @@ class Game {
 
   userScissorPick(hpick,cpick) {
     if(cpick === 'rock') {
-      return this.computerWins()
+      return this.computerWins();
     }
-    return this.humanWins()
+    return this.humanWins();
   }
 
   humanWins() {
@@ -87,7 +87,7 @@ class Game {
     <img class="player-image-mini" src="./assets/player.png" alt="Player">
     Human Wins!!
     <img class="player-image-mini" src="./assets/player.png" alt="Player">`
-    return console.log('human won');
+    return
   }
 
   computerWins() {
@@ -97,7 +97,7 @@ class Game {
     <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">
     Computer Wins!!
     <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">`
-    return console.log('computer won')
+    return
   }
 
 }

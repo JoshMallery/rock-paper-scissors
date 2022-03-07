@@ -15,8 +15,8 @@ var currentGame = null;
 
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
-  standardOrEnhancedGameSelection(event)
-  playerIconSelection(event)
+  standardOrEnhancedGameSelection(event);
+  playerIconSelection(event);
 });
 
 function standardOrEnhancedGameSelection(event) {
@@ -50,7 +50,7 @@ function startGame(gameChoice, userPick) {
   var userPickToDisplay = currentGame.human.pick;
   var computerPickToDisplay = currentGame.computer.pick;
 
-  displayGamePlayIcons(userPickToDisplay,computerPickToDisplay)
+  displayGamePlayIcons(userPickToDisplay,computerPickToDisplay);
 
   closeOutGame();
 }
@@ -64,9 +64,9 @@ function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
 }
 
 function closeOutGame(){
-  updateScoresFromStorage()
+  updateScoresFromStorage();
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,1200);
+  setTimeout(restartGame,9000);
 }
 
 function switchGame() {
