@@ -13,7 +13,7 @@ var computerWins = document.querySelector('.computer-count');
 updateScoresFromStorage();
 
 var currentGame = null;
-//the error is that if i click change game, restart game is still trying to run, there is a gap that exists where it shows the game rules then resets the game
+
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
   standardOrEnhancedGameSelection(event)
@@ -30,15 +30,12 @@ function standardOrEnhancedGameSelection(event) {
 
 function playerIconSelection(event) {
 if(event.target.classList.value === 'game-icon') {
-  //remove the listener here once we know we have selected a game icon
-  //this.removeEventListener('click',arguments.callee);
   startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
   }
 }
 
 function gameSelection(gameType) {
   hideAllGameIcons();
-  // hideRules()
   if (gameType === 'standard') {
     toggleStandardGameView();
   } else {
@@ -47,8 +44,6 @@ function gameSelection(gameType) {
   }
 
 function startGame(gameChoice, userPick) {
-  // gameContainer = null;
-  //also we could remove the listener here?
   hideAllGameIcons();
   currentGame = new Game(gameChoice, userPick);
   currentGame.determineWinner();
@@ -77,9 +72,7 @@ function displayPlayersSmallIcon(userPickToDisplay) {
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-
   setTimeout(restartGame,900);
-  //disable buttons
 }
 
 function switchGame() {
@@ -90,10 +83,9 @@ function switchGame() {
 }
 
 function restartGame() {
-  //enable buttons
-  //this is the best spot to re-instate the listener
-  // gameContainer = document.querySelector('.standard-game-container');
-  gameSelection(localStorage.getItem('standardOrEnhancedGame'));
+  if (normalRules.classList.contains("hidden")){
+    gameSelection(localStorage.getItem('standardOrEnhancedGame'));
+  }
 }
 
 function updateScoresFromStorage() {
@@ -130,11 +122,6 @@ function toggleRules() {
   toggle(normalRules);
   toggle(enhancedRules);
 }
-
-// function hideRules() {
-//   normalRules.classList.add("hidden")
-//   enhancedRules.classList.add("hidden")
-// }
 
 function toggleStandardGameView() {
   toggle(gameIcons[0]);
