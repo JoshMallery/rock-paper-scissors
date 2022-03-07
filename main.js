@@ -2,7 +2,7 @@ var gameContainer = document.querySelector('.standard-game-container');
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
-var playerMiniIcons = document.querySelectorAll('.player-mini');
+// var playerMiniIcons = document.querySelectorAll('.player-mini');
 var playerGameIcon = document.querySelector('#player');
 var computerGameIcon = document.querySelector('#computer');
 var gamePrompt = document.querySelector('.game-prompt');
@@ -22,8 +22,8 @@ gameContainer.addEventListener('click', function(event) {
 
 function standardOrEnhancedGameSelection(event) {
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-    localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
+    localStorage.setItem('standardOrEnhancedGame', event.target.id);
     gameSelection(event.target.id);
     }
 }
@@ -59,20 +59,20 @@ function startGame(gameChoice, userPick) {
 function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
   playerGameIcon.src = `./assets/${userPickToDisplay}.png`;
   toggle(document.getElementById(`player-container`));
-  displayPlayersSmallIcon(userPickToDisplay);
+  // displayPlayersSmallIcon(userPickToDisplay);
 
   computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
   toggle(document.getElementById(`computer-container`));
 }
 
-function displayPlayersSmallIcon(userPickToDisplay) {
-  toggle(document.getElementById(`display-user-pick`))
-}
+// function displayPlayersSmallIcon(userPickToDisplay) {
+//   toggle(document.getElementById(`display-user-pick`))
+// }
 
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,900);
+  setTimeout(restartGame,1200);
 }
 
 function switchGame() {
@@ -109,9 +109,9 @@ function hideAllGameIcons() {
     gameIcons[i].classList.add("hidden");
   }
 
-  for(var i = 0; i < playerMiniIcons.length; i++){
-    playerMiniIcons[i].classList.add("hidden");
-  }
+  // for(var i = 0; i < playerMiniIcons.length; i++){
+  //   playerMiniIcons[i].classList.add("hidden");
+  // }
 }
 
 function toggle(idToToggle) {
