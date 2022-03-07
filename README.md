@@ -44,6 +44,7 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 ### Organizational Resources
 
 * [Trello Board](https://trello.com/b/cOmhFPxA/rock-paper-scissors)
+* WireFrame
 ![Excalidraw](https://user-images.githubusercontent.com/96563007/157084746-18ac1e4b-7fdc-4d94-b8de-2513dbb7bd76.png)
 
 
