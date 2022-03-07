@@ -102,8 +102,9 @@ function updateScoresFromStorage() {
 }
 
 function resetScores() {
-  localStorage.clear()
-  updateScoresFromStorage()
+  localStorage.removeItem('human');
+  localStorage.removeItem('computer');
+  updateScoresFromStorage();
 }
 
 function hideAllGameIcons() {
