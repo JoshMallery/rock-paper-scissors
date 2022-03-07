@@ -6,7 +6,7 @@ var playerGameIcon = document.querySelector('#player');
 var computerGameIcon = document.querySelector('#computer');
 var gamePrompt = document.querySelector('.game-prompt');
 var changeGame = document.querySelector('.change-game');
-var resetGame = document.querySelector('.reset-score');
+var resetWins = document.querySelector('.reset-score');
 var playerWins = document.querySelector('.player-count');
 var computerWins = document.querySelector('.computer-count');
 
@@ -15,7 +15,7 @@ updateScoresFromStorage();
 var currentGame = new Game;
 
 changeGame.addEventListener('click', switchGame);
-resetGame.addEventListener('click', resetScores);
+resetWins.addEventListener('click', resetScores);
 gameContainer.addEventListener('click', function(event) {
   standardOrEnhancedGameSelection(event);
   playerIconSelection(event);
@@ -71,7 +71,7 @@ function displayGamePlayIcons() {
 function closeOutGame(){
   updateScoresFromStorage();
   changeGame.classList.remove('hidden');
-  resetGame.classList.remove('hidden');
+  resetWins.classList.remove('hidden');
   setTimeout(currentGame.restartGame,1200);
 }
 
@@ -82,7 +82,7 @@ function updateScoresFromStorage() {
   if(humanScore){
     playerWins.innerText = `Wins: ${humanScore}`;
   }
-  
+
   if(computerScore){
     computerWins.innerText = `Wins: ${computerScore}`;
   }
