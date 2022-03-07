@@ -53,6 +53,13 @@ function startGame() {
   closeOutGame();
 }
 
+function gameWinnerPrompt(winner) {
+  gamePrompt.innerHTML = `
+  <img class="player-image-mini" src="./assets/${winner}.png" alt="Player">
+  ${winner} Wins!!
+  <img class="player-image-mini" src="./assets/${winner}.png" alt="Player">`
+}
+
 function displayGamePlayIcons() {
   playerGameIcon.src = `./assets/${currentGame.human.pick}.png`;
   toggle(document.getElementById(`player-container`));
@@ -72,16 +79,13 @@ function updateScoresFromStorage() {
   var humanScore = localStorage.getItem('human');
   var computerScore = localStorage.getItem('computer');
 
-  if(!humanScore){
-    humanScore = 0;
+  if(humanScore){
+    playerWins.innerText = `Wins: ${humanScore}`;
   }
-
-  if(!computerScore){
-    computerScore = 0;
+  
+  if(computerScore){
+    computerWins.innerText = `Wins: ${computerScore}`;
   }
-
-  playerWins.innerText = `Wins: ${humanScore}`;
-  computerWins.innerText = `Wins: ${computerScore}`;
 }
 
 function switchGame() {
@@ -124,7 +128,6 @@ function toggleEnhancedGameView() {
   toggleStandardGameView();
   toggle(gameIcons[3]);
   toggle(gameIcons[4]);
-  gamePrompt.innerText = `Choose Your Fighter!`;
 }
 
 function toggleChangeGame() {
