@@ -38,6 +38,7 @@ if(event.target.classList.value === 'game-icon') {
 
 function gameSelection(gameType) {
   hideAllGameIcons();
+  // hideRules()
   if (gameType === 'standard') {
     toggleStandardGameView();
   } else {
@@ -70,14 +71,14 @@ function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
 }
 
 function displayPlayersSmallIcon(userPickToDisplay) {
-  toggle(document.getElementById(`${userPickToDisplay}-user-pick`))
+  toggle(document.getElementById(`display-user-pick`))
 }
 
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
 
-  setTimeout(restartGame,750);
+  setTimeout(restartGame,900);
   //disable buttons
 }
 
@@ -129,6 +130,11 @@ function toggleRules() {
   toggle(normalRules);
   toggle(enhancedRules);
 }
+
+// function hideRules() {
+//   normalRules.classList.add("hidden")
+//   enhancedRules.classList.add("hidden")
+// }
 
 function toggleStandardGameView() {
   toggle(gameIcons[0]);
