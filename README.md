@@ -31,7 +31,7 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 * Games reset automatically
 
 ##GamePlay Animation
-
+![Rock-paper Scissors Animation](https://user-images.githubusercontent.com/96563007/157084419-5e956f12-6ce3-41d8-b4b5-e15789f3624d.gif)
 
 
 ### Set Up
@@ -43,4 +43,6 @@ The spec for this project can be found [here](https://frontend.turing.edu/projec
 ### Organizational Resources
 
 * [Trello Board](https://trello.com/b/cOmhFPxA/rock-paper-scissors)
-* [Wireframe]()
+* [Wireframe](![Excalidraw](https://user-images.githubusercontent.com/96563007/157084746-18ac1e4b-7fdc-4d94-b8de-2513dbb7bd76.png))
+
+
