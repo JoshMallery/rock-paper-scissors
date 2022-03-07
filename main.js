@@ -79,13 +79,16 @@ function updateScoresFromStorage() {
   var humanScore = localStorage.getItem('human');
   var computerScore = localStorage.getItem('computer');
 
-  if(humanScore){
-    playerWins.innerText = `Wins: ${humanScore}`;
+  if(!humanScore){
+    humanScore = 0;
   }
 
-  if(computerScore){
-    computerWins.innerText = `Wins: ${computerScore}`;
+  if(!computerScore){
+    computerScore = 0;
   }
+  
+  playerWins.innerText = `Wins: ${humanScore}`;
+  computerWins.innerText = `Wins: ${computerScore}`;
 }
 
 function switchGame() {
