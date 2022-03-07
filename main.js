@@ -2,7 +2,9 @@ var gameContainer = document.querySelector('.standard-game-container');
 var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
-var inCaseOfADraw = document.querySelector('#draw');
+// var playerMiniIcons = document.querySelectorAll('.player-mini');
+var playerGameIcon = document.querySelector('#player');
+var computerGameIcon = document.querySelector('#computer');
 var gamePrompt = document.querySelector('.game-prompt');
 var changeGame = document.querySelector('.change-game');
 var playerWins = document.querySelector('.player-count');
@@ -11,22 +13,26 @@ var computerWins = document.querySelector('.computer-count');
 updateScoresFromStorage();
 
 var currentGame = null;
-//the error is that if i click change game, restart game is still trying to run, there is a gap that exists where it shows the game rules then resets the game
+
 changeGame.addEventListener('click', switchGame);
 gameContainer.addEventListener('click', function(event) {
+  standardOrEnhancedGameSelection(event)
+  playerIconSelection(event)
+});
 
+function standardOrEnhancedGameSelection(event) {
   if(event.target.id === 'standard' || event.target.id === 'enhanced') {
-    localStorage.setItem('standardOrEnhancedGame', event.target.id);
     toggleRules();
+    localStorage.setItem('standardOrEnhancedGame', event.target.id);
     gameSelection(event.target.id);
     }
+}
 
-  if(event.target.classList.value === 'game-icon') {
-    //remove the listener here once we know we have selected a game icon
-    //this.removeEventListener('click',arguments.callee);
-    startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
-    }
-});
+function playerIconSelection(event) {
+if(event.target.classList.value === 'game-icon') {
+  startGame(localStorage.getItem('standardOrEnhancedGame'), event.target.id);
+  }
+}
 
 function gameSelection(gameType) {
   hideAllGameIcons();
@@ -38,8 +44,6 @@ function gameSelection(gameType) {
   }
 
 function startGame(gameChoice, userPick) {
-  // gameContainer = null;
-  //also we could remove the listener here?
   hideAllGameIcons();
   currentGame = new Game(gameChoice, userPick);
   currentGame.determineWinner();
@@ -53,20 +57,22 @@ function startGame(gameChoice, userPick) {
 }
 
 function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
-  toggle(document.getElementById(`${userPickToDisplay}-container`));
+  playerGameIcon.src = `./assets/${userPickToDisplay}.png`;
+  toggle(document.getElementById(`player-container`));
+  // displayPlayersSmallIcon(userPickToDisplay);
 
-  if(userPickToDisplay !== computerPickToDisplay){
-    toggle(document.getElementById(`${computerPickToDisplay}-container`))
-  } else {
-    inCaseOfADraw.src = `./assets/${computerPickToDisplay}.png`;
-    toggle(document.getElementById(`draw-container`));
-  }
+  computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
+  toggle(document.getElementById(`computer-container`));
 }
+
+// function displayPlayersSmallIcon(userPickToDisplay) {
+//   toggle(document.getElementById(`display-user-pick`))
+// }
 
 function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
-  setTimeout(restartGame,4000);
+  setTimeout(restartGame,1200);
 }
 
 function switchGame() {
@@ -77,9 +83,9 @@ function switchGame() {
 }
 
 function restartGame() {
-  //this is the best spot to re-instate the listener
-  // gameContainer = document.querySelector('.standard-game-container');
-  gameSelection(localStorage.getItem('standardOrEnhancedGame'));
+  if (normalRules.classList.contains("hidden")){
+    gameSelection(localStorage.getItem('standardOrEnhancedGame'));
+  }
 }
 
 function updateScoresFromStorage() {
@@ -102,6 +108,10 @@ function hideAllGameIcons() {
   for(var i = 0; i < gameIcons.length; i++){
     gameIcons[i].classList.add("hidden");
   }
+
+  // for(var i = 0; i < playerMiniIcons.length; i++){
+  //   playerMiniIcons[i].classList.add("hidden");
+  // }
 }
 
 function toggle(idToToggle) {

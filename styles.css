@@ -33,6 +33,7 @@ body {
   font-size: 22px;
   height: 10%;
   justify-content: center;
+  margin: 10px;
   width: 100%;
 }
 
@@ -54,13 +55,14 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 20%;
+  height: 30%;
   justify-content: space-around;
   width: 100%;
 }
 
 .title-container {
   font-size: 45px;
+  margin: 10px;
 }
 
 .game-prompt-container {
@@ -71,7 +73,7 @@ body {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  height: 80%;
+  height: 70%;
   justify-content: center;
   width: 100%;
 }
@@ -81,29 +83,46 @@ body {
   display: flex;
   height: 30%;
   justify-content: center;
+  padding: 15px;
   width: 30%;
+}
+
+.normal-rules-container, .enhanced-rules-container {
+  background-color: lightblue;
+  border: 3px solid black;
+  cursor: pointer;
+  display: inline;
+  font-size: 15px;
+  margin: 20px;
 }
 
 .normal-rules-container:hover, .enhanced-rules-container:hover {
   transform: skew(-5deg);
 }
 
-.game-icon-container:hover, .change-game:hover {
-   transform: scale(1.2);
+.game-icon:hover, .change-game:hover {
+  transform: scale(1.1);
 }
 
-.normal-rules-container, .enhanced-rules-container {
-  background-color: lightblue;
-  border: 3px solid black;
-  display: inline;
-  font-size: 15px;
-  margin: 20px;
-  padding: 20px;
+
+.game-icon, .change-game {
+  cursor: url("./assets/player-cursor.png"), pointer;
 }
 
 .game-icon {
   height: 135px;
   width: 135px;
+}
+
+.fighter-icon {
+  height: 135px;
+  width: 135px;
+}
+
+.player-mini {
+  height: 32px;
+  transform: translateY(50px);
+  width: 32px;
 }
 
 .hidden {
