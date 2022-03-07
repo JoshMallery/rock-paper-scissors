@@ -3,6 +3,7 @@ var normalRules = document.querySelector('.normal-rules-container');
 var enhancedRules = document.querySelector('.enhanced-rules-container');
 var gameIcons = document.querySelectorAll('.game-icon-container');
 var playerMiniIcons = document.querySelectorAll('.player-mini');
+var playerGameIcon = document.querySelector('#player');
 var computerGameIcon = document.querySelector('#computer');
 var gamePrompt = document.querySelector('.game-prompt');
 var changeGame = document.querySelector('.change-game');
@@ -60,7 +61,8 @@ function startGame(gameChoice, userPick) {
 }
 
 function displayGamePlayIcons(userPickToDisplay,computerPickToDisplay) {
-  toggle(document.getElementById(`${userPickToDisplay}-container`));
+  playerGameIcon.src = `./assets/${userPickToDisplay}.png`;
+  toggle(document.getElementById(`player-container`));
   displayPlayersSmallIcon(userPickToDisplay);
 
   computerGameIcon.src = `./assets/${computerPickToDisplay}.png`;
@@ -75,7 +77,7 @@ function closeOutGame(){
   updateScoresFromStorage()
   changeGame.classList.remove('hidden');
 
-  setTimeout(restartGame,2000);
+  setTimeout(restartGame,750);
   //disable buttons
 }
 

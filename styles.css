@@ -114,6 +114,11 @@ body {
   width: 135px;
 }
 
+.fighter-icon {
+  height: 135px;
+  width: 135px;
+}
+
 .player-mini {
   height: 32px;
   transform: translateY(50px);
