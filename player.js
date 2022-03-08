@@ -1,9 +1,7 @@
 class Player {
-  constructor(playerName,gameChoice,userPick) {
+  constructor(playerName) {
       this.name = playerName;
       this.wins = this.retrieveWinsFromStorage() || 0;
-      this.gameChoice = gameChoice
-      this.pick = userPick || this.takeTurn();
   }
 
   takeTurn() {

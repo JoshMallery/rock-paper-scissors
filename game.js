@@ -1,12 +1,13 @@
 class Game {
-  constructor(gameChoice,userPick) {
-    this.human = new Player('human',gameChoice,userPick);
-    this.computer = new Player('computer',gameChoice);
+  constructor() {
+    this.human = new Player('human');
+    this.computer = new Player('computer');
   }
 
   determineWinner() {
     var hpick = this.human.pick;
-    var cpick = this.computer.pick;
+    var cpick = this.computer.takeTurn();
+    this.computer.pick = cpick;
 
     if(hpick === cpick) {
       return this.draw();
@@ -83,21 +84,25 @@ class Game {
   humanWins() {
     this.human.wins++;
     this.human.saveWinsToStorage();
-    gamePrompt.innerHTML = `
-    <img class="player-image-mini" src="./assets/player.png" alt="Player">
-    Human Wins!!
-    <img class="player-image-mini" src="./assets/player.png" alt="Player">`
+    gameWinnerPrompt('human');
     return
   }
 
   computerWins() {
     this.computer.wins++;
     this.computer.saveWinsToStorage();
-    gamePrompt.innerHTML = `
-    <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">
-    Computer Wins!!
-    <img class="player-image-mini" src="./assets/computer.png" alt="Computer Player">`
+    gameWinnerPrompt('computer');
     return
+  }
+
+  restartGame() {
+    if (normalRules.classList.contains("hidden")){
+      gameIconSelection();
+    }
+  }
+
+  clearScores(){
+    localStorage.clear()
   }
 
 }
