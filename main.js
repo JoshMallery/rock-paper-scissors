@@ -77,7 +77,7 @@ function closeOutGame(){
   updateScoresFromStorage();
   changeGame.classList.remove('hidden');
   resetWins.classList.remove('hidden');
-  setTimeout(currentGame.restartGame,1200);
+  setTimeout(currentGame.restartGame,3000);
 }
 
 function updateScoresFromStorage() {
