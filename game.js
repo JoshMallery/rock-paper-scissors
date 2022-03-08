@@ -83,21 +83,21 @@ class Game {
 
   humanWins() {
     this.human.wins++;
+    this.currentWinner = this.human.name;
     this.human.saveWinsToStorage();
-    gameWinnerPrompt('human');
-    return
+    gameWinnerPrompt();
   }
 
   computerWins() {
     this.computer.wins++;
+    this.currentWinner = this.computer.name;
     this.computer.saveWinsToStorage();
-    gameWinnerPrompt('computer');
-    return
+    gameWinnerPrompt();
   }
 
   restartGame() {
     if (normalRules.classList.contains("hidden")){
-      gameIconSelection();
+      toggleGameView();
     }
   }
 

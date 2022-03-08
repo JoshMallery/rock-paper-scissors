@@ -5,13 +5,13 @@ class Player {
   }
 
   takeTurn() {
-    var gameLength = 5;
+    this.gameLength = 5;
     var gameArray = ['rock','paper','scissors','rocket','kangaroo'];
 
     if(this.gameChoice === 'standard') {
-      gameLength = 3;
+      this.gameLength = 3;
     }
-    return gameArray[Math.floor(Math.random() * gameLength)]
+    return gameArray[Math.floor(Math.random() * this.gameLength)]
   }
 
   saveWinsToStorage() {

@@ -26,7 +26,7 @@ function standardOrEnhancedGameSelection(event) {
     currentGame.human.gameChoice = event.target.id;
     currentGame.computer.gameChoice = event.target.id;
     toggleRules();
-    gameIconSelection();
+    toggleGameView();
     }
 }
 
@@ -37,14 +37,19 @@ if(event.target.classList.value === 'game-icon') {
   }
 }
 
-function gameIconSelection() {
+function toggleGameView() {
   hideAllGameIcons();
-  if (currentGame.human.gameChoice === 'standard') {
-    toggleStandardGameView();
-  } else {
-    toggleEnhancedGameView();
-    }
+  gamePrompt.innerText = `Choose Your Fighter!`
+
+  var iconsToDisplay = 3;
+  if(currentGame.human.gameChoice === 'enhanced') {
+    iconsToDisplay = 5;
   }
+
+  for (i = 0; i < iconsToDisplay; i++) {
+    toggle(gameIcons[i]);
+  }
+}
 
 function startGame() {
   hideAllGameIcons();
@@ -53,11 +58,11 @@ function startGame() {
   closeOutGame();
 }
 
-function gameWinnerPrompt(winner) {
+function gameWinnerPrompt() {
   gamePrompt.innerHTML = `
-  <img class="player-image-mini" src="./assets/${winner}.png" alt="Player">
-  ${winner} Wins!!
-  <img class="player-image-mini" src="./assets/${winner}.png" alt="Player">`
+  <img class="player-image-mini" src="./assets/${currentGame.currentWinner}.png" alt="${currentGame.currentWinner} Icon">
+  ${currentGame.currentWinner} Wins!!
+  <img class="player-image-mini" src="./assets/${currentGame.currentWinner}.png" alt="${currentGame.currentWinner} Icon">`
 }
 
 function displayGamePlayIcons() {
@@ -86,7 +91,7 @@ function updateScoresFromStorage() {
   if(!computerScore){
     computerScore = 0;
   }
-  
+
   playerWins.innerText = `Wins: ${humanScore}`;
   computerWins.innerText = `Wins: ${computerScore}`;
 }
@@ -120,18 +125,6 @@ function toggleRules() {
   toggle(enhancedRules);
 }
 
-function toggleStandardGameView() {
-  toggle(gameIcons[0]);
-  toggle(gameIcons[1]);
-  toggle(gameIcons[2]);
-  gamePrompt.innerText = `Choose Your Fighter!`;
-}
-
-function toggleEnhancedGameView() {
-  toggleStandardGameView();
-  toggle(gameIcons[3]);
-  toggle(gameIcons[4]);
-}
 
 function toggleChangeGame() {
   toggle(changeGame);
