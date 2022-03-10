@@ -75,6 +75,7 @@ function displayGamePlayIcons() {
 
 function closeOutGame(){
   updateScoresFromStorage();
+  gameWinnerPrompt();
   changeGame.classList.remove('hidden');
   resetWins.classList.remove('hidden');
   setTimeout(currentGame.restartGame,3000);

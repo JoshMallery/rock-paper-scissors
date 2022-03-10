@@ -85,14 +85,12 @@ class Game {
     this.human.wins++;
     this.currentWinner = this.human.name;
     this.human.saveWinsToStorage();
-    gameWinnerPrompt();
   }
 
   computerWins() {
     this.computer.wins++;
     this.currentWinner = this.computer.name;
     this.computer.saveWinsToStorage();
-    gameWinnerPrompt();
   }
 
   restartGame() {
