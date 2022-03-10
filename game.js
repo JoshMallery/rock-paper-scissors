@@ -35,8 +35,7 @@ class Game {
   }
 
   draw() {
-    gamePrompt.innerText =`It's draw!!`;
-    return
+    this.currentWinner = `draw`;
   }
 
   eitherRocketPick(hpick,cpick){
@@ -85,20 +84,20 @@ class Game {
     this.human.wins++;
     this.currentWinner = this.human.name;
     this.human.saveWinsToStorage();
-    this.clearPicks;
+    // this.clearPicks;
   }
 
   computerWins() {
     this.computer.wins++;
     this.currentWinner = this.computer.name;
     this.computer.saveWinsToStorage();
-    this.clearPicks;
+    // this.clearPicks;
   }
 
-  clearPicks() {
-    this.human.pick = "";
-    this.computer.pick = "";
-    }
+  // clearPicks() {
+  //   this.human.pick = "";
+  //   this.computer.pick = "";
+  //   }
 
   clearScores(){
     localStorage.clear()

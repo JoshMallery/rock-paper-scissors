@@ -59,6 +59,11 @@ function startGame() {
 }
 
 function gameWinnerPrompt() {
+  if(currentGame.currentWinner === 'draw') {
+    gamePrompt.innerHTML = "It's a Draw!!"
+    return
+  }
+
   gamePrompt.innerHTML = `
   <img class="player-image-mini" src="./assets/${currentGame.currentWinner}.png" alt="${currentGame.currentWinner} Icon">
   ${currentGame.currentWinner} Wins!!
