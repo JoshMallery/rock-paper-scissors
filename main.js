@@ -137,7 +137,6 @@ function toggleRules() {
   toggle(enhancedRules);
 }
 
-
 function toggleChangeGame() {
   toggle(changeGame);
 }
