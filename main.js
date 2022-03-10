@@ -78,7 +78,7 @@ function closeOutGame(){
   gameWinnerPrompt();
   changeGame.classList.remove('hidden');
   resetWins.classList.remove('hidden');
-  setTimeout(currentGame.restartGame,3000);
+  setTimeout(restartGame,3000);
 }
 
 function updateScoresFromStorage() {
@@ -96,6 +96,12 @@ function updateScoresFromStorage() {
   playerWins.innerText = `Wins: ${humanScore}`;
   computerWins.innerText = `Wins: ${computerScore}`;
 }
+
+function restartGame() {
+  if (normalRules.classList.contains("hidden")) {
+    toggleGameView();
+    }
+  }
 
 function switchGame() {
   hideAllGameIcons();

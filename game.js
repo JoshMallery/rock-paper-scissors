@@ -85,19 +85,20 @@ class Game {
     this.human.wins++;
     this.currentWinner = this.human.name;
     this.human.saveWinsToStorage();
+    this.clearPicks;
   }
 
   computerWins() {
     this.computer.wins++;
     this.currentWinner = this.computer.name;
     this.computer.saveWinsToStorage();
+    this.clearPicks;
   }
 
-  restartGame() {
-    if (normalRules.classList.contains("hidden")){
-      toggleGameView();
+  clearPicks() {
+    this.human.pick = "";
+    this.computer.pick = "";
     }
-  }
 
   clearScores(){
     localStorage.clear()
