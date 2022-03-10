@@ -59,6 +59,11 @@ function startGame() {
 }
 
 function gameWinnerPrompt() {
+  if(currentGame.currentWinner === 'draw') {
+    gamePrompt.innerHTML = "It's a Draw!!"
+    return
+  }
+
   gamePrompt.innerHTML = `
   <img class="player-image-mini" src="./assets/${currentGame.currentWinner}.png" alt="${currentGame.currentWinner} Icon">
   ${currentGame.currentWinner} Wins!!
@@ -75,9 +80,10 @@ function displayGamePlayIcons() {
 
 function closeOutGame(){
   updateScoresFromStorage();
+  gameWinnerPrompt();
   changeGame.classList.remove('hidden');
   resetWins.classList.remove('hidden');
-  setTimeout(currentGame.restartGame,3000);
+  setTimeout(restartGame,3000);
 }
 
 function updateScoresFromStorage() {
@@ -95,6 +101,12 @@ function updateScoresFromStorage() {
   playerWins.innerText = `Wins: ${humanScore}`;
   computerWins.innerText = `Wins: ${computerScore}`;
 }
+
+function restartGame() {
+  if (normalRules.classList.contains("hidden")) {
+    toggleGameView();
+    }
+  }
 
 function switchGame() {
   hideAllGameIcons();
@@ -124,7 +136,6 @@ function toggleRules() {
   toggle(normalRules);
   toggle(enhancedRules);
 }
-
 
 function toggleChangeGame() {
   toggle(changeGame);
